@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Twitch API Demo</title>
+  <script src="https://player.twitch.tv/js/embed/v1.js"></script>
+</head>
+<body>
+  <h1>Les 5 dernières vidéos Apex Legends sur Twitch</h1>
+  <div id="twitch-players"></div>
+
+  <script type="text/javascript">
+    var clientId = 'yyylakp9o04ai49b8pjivcsj1xo2qp';
+    var gameName = 'Apex Legends';
+    var limit = 5;
+    var twitchApiUrl = 'https://api.twitch.tv/helix/videos?game_id=511224';
+
+    // Construire l'URL de l'API Twitch avec les paramètres de requête
+    var apiUrl = twitchApiUrl +  '&first=' + limit;
+
+    // Configuration des en-têtes de requête pour inclure le client ID
+    var headers = new Headers({
+      'Client-ID': clientId,
+      'Authorization': 'Bearer xob734x4lockx7h6e2lij0h20v3i9t'
+    });
+
+    // Récupérer les données de l'API Twitch
+// Récupérer les données de l'API Twitch
+fetch(apiUrl, { headers: headers })
+  .then(function(response) {
+    return response.json();
+  })
+  .then(function(data) {
+    // Utiliser une boucle for...of pour itérer sur les vidéos dans "data"
+    for (const video of data.data) {
+      var playerDiv = document.createElement('div');
+      playerDiv.id = 'twitch-player-' + video.id;
+      console.log(video)
+      document.getElementById('twitch-players').appendChild(playerDiv);
+
+      var player = new Twitch.Player('twitch-player-' + video.id, {
+        channel: video.user_name,
+        video: video.id,
+        autoplay: false
+      });
+    }
+  })
+  .catch(function(error) {
+    console.error(error);
+  });
+
+  </script>
+</body>
+</html>
