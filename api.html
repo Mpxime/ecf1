@@ -1,10 +1,19 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
   <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Twitch API Demo</title>
-  <script src="https://player.twitch.tv/js/embed/v1.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+  integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+<link rel="stylesheet" href="style.css">
+<script src="https://kit.fontawesome.com/c5b2ee8841.js" crossorigin="anonymous"></script>
+<script src="https://player.twitch.tv/js/embed/v1.js"></script>
 </head>
+
+
+
 <body>
   <header>
     <nav class="navbar navbar-expand-lg bg-gradient bg-danger  text-black fixed-top">
@@ -33,8 +42,8 @@
                         <a class="nav-link" href="contact.html">Contact</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="api.html">api</a>
-                  </li>
+                        <a class="nav-link" href="api.html">api</a>
+                    </li>
 
                 </ul>
             </div>
@@ -50,13 +59,14 @@
   <div id="twitch-players"></div>
 
   <script type="text/javascript">
+    document.cookie = "unique_id = VMtiAZkCEf350s1p2YpFhXDx53skyX4a; SameSite=Lax";
     var clientId = 'yyylakp9o04ai49b8pjivcsj1xo2qp';
     var gameName = 'Apex Legends';
     var limit = 5;
     var twitchApiUrl = 'https://api.twitch.tv/helix/videos?game_id=511224';
 
     // Construire l'URL de l'API Twitch avec les paramètres de requête
-    var apiUrl = twitchApiUrl +  '&first=' + limit;
+    var apiUrl = twitchApiUrl + '&first=' + limit;
 
     // Configuration des en-têtes de requête pour inclure le client ID
     var headers = new Headers({
@@ -88,7 +98,20 @@ fetch(apiUrl, { headers: headers })
   .catch(function(error) {
     console.error(error);
   });
+  
 
   </script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
